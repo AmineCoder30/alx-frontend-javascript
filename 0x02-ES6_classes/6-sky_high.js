@@ -1,23 +1,29 @@
-import Building from "./5-building";
+class Building {
+  constructor(sqft) {
+    this.sqft = sqft;
+  }
+}
 
-export default class SkyHighBuilding extends Building {
+class SkyHighBuilding extends Building {
   constructor(sqft, floors) {
     super(sqft);
-    this.floors = floors;
+    this.setFloors(floors);
   }
 
-  get floors() {
-    return this._floors;
-  }
-
-  set floors(newFloors) {
+  setFloors(newFloors) {
     if (typeof newFloors !== "number") {
       throw TypeError("Floors must be a number");
     }
     this._floors = newFloors;
   }
 
+  getFloors() {
+    return this._floors;
+  }
+
   evacuationWarningMessage() {
-    return `Evacuate slowly the ${this._floors} floors`;
+    return `Evacuate slowly the ${this.getFloors()} floors`;
   }
 }
+
+export default SkyHighBuilding;
